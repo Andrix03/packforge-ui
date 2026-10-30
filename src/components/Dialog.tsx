@@ -2,7 +2,7 @@
 // to what opened it). Either give `title` (and `description`, `actions`: the buttons, main one
 // last), or draw the whole content as children with a `label` for screen readers.
 import { Dialog as BaseDialog } from '@base-ui/react/dialog'
-import { useRef } from 'react'
+import { useEffect, useId, useSyncExternalStore } from 'react'
 import './Dialog.css'
 
 export interface DialogProps {
@@ -39,22 +39,36 @@ export function Dialog({
   className,
   children
 }: DialogProps): React.JSX.Element {
-  const popup = useRef<HTMLDivElement>(null)
+  const id = useId()
+  useEffect(() => {
+    if (!open) return
+    openOrder = [...openOrder, id]
+    emit()
+    return () => {
+      const at = openOrder.lastIndexOf(id)
+      openOrder = [...openOrder.slice(0, at), ...openOrder.slice(at + 1)]
+      emit()
+    }
+  }, [open, id])
+  const top = useSyncExternalStore(subscribe, () => openOrder.at(-1))
+  // A window covered by another one lets it have the focus and the clicks: it stops trapping the
+  // focus until the one on top closes (Base UI does not know they are stacked).
+  const covered = open && top !== undefined && top !== id
   return (
     <BaseDialog.Root
       open={open}
       onOpenChange={(next, details) => {
         // Windows opened by separate parts of an app are not nested for Base UI: each one hears the
-        // Esc. Only the one on top (the last in the page) answers it.
-        if (!next && details.reason === 'escape-key' && !onTop(popup.current)) return
+        // Esc. Only the one on top (the last opened) answers it.
+        if (!next && details.reason === 'escape-key' && covered) return
         if (next || dismissible) onOpenChange(next)
       }}
-      disablePointerDismissal={kind === 'alert' || !dismissible}
+      disablePointerDismissal={kind === 'alert' || !dismissible || covered}
+      modal={!covered}
     >
       <BaseDialog.Portal>
         <BaseDialog.Backdrop className="pf-dialog-backdrop" />
         <BaseDialog.Popup
-          ref={popup}
           className={`pf-popup pf-dialog${className ? ` ${className}` : ''}`}
           role={kind === 'alert' ? 'alertdialog' : 'dialog'}
           aria-label={label}
@@ -76,8 +90,14 @@ export function Dialog({
   )
 }
 
-/** Whether this window is the last open one in the page, the one the user sees on top. */
-function onTop(element: HTMLElement | null): boolean {
-  const windows = document.querySelectorAll('.pf-dialog')
-  return element === null || windows[windows.length - 1] === element
+/**
+ * The open windows, in the order they opened (the page order of their portals is not reliable:
+ * Base UI may reuse one created earlier).
+ */
+let openOrder: readonly string[] = []
+const listeners = new Set<() => void>()
+const emit = (): void => listeners.forEach((listener) => listener())
+const subscribe = (listener: () => void): (() => void) => {
+  listeners.add(listener)
+  return () => listeners.delete(listener)
 }

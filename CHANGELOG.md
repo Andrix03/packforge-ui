@@ -5,7 +5,8 @@
 - Dialog: `title` is optional, with `label` for a window that draws its own heading;
   `dismissible={false}` keeps it open while work runs; `className` for the app's layout; the
   width comes from CSS unless `width` is given.
-- Two windows open at once (a question over a dialog): Esc closes only the one on top.
+- Two windows open at once (a question over a dialog): Esc closes only the one on top, and the
+  window underneath stops trapping the focus and the clicks until the top one closes.
 - The page look (background, font) is opt-in with the `pf-root` class: the kit no longer styles
   `<body>` by itself.
 - Workflows on the current versions of the GitHub actions.
