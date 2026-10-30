@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — unreleased
+## 0.1.0 — 2026-10-30
 
 - Two themes as design tokens, Minecraft and Pulito, with a contrast test on every text colour.
 - Components: Button, IconButton, Toggle, Checkbox, Slider, TextField, Select, Tabs, Dialog,
