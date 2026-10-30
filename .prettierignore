@@ -1,0 +1,5 @@
+dist
+gallery-dist
+node_modules
+package-lock.json
+src/icons/data.ts

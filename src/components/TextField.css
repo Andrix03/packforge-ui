@@ -1,0 +1,38 @@
+.pf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.pf-input {
+  height: var(--pf-control-height);
+  padding: 0 8px;
+  box-sizing: border-box;
+  min-width: 0;
+  background: var(--pf-sunken);
+  color: var(--pf-text);
+  font: inherit;
+  border: 2px solid;
+  border-color: var(--pf-field-border);
+  border-radius: var(--pf-radius);
+}
+:root[data-pf-theme='pulito'] .pf-input {
+  border-width: 1px;
+}
+.pf-input:focus-visible {
+  outline: 2px solid var(--pf-focus);
+  outline-offset: 1px;
+}
+.pf-input[aria-invalid='true'] {
+  border-color: var(--pf-danger-text);
+}
+.pf-input.pf-mono {
+  font-family: var(--pf-mono-font);
+}
+.pf-field-hint {
+  color: var(--pf-text-faint);
+  font-size: 0.875em;
+}
+.pf-field-error {
+  color: var(--pf-danger-text);
+}

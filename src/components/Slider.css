@@ -1,0 +1,104 @@
+.pf-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pf-slider-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.pf-slider-control {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  touch-action: none;
+}
+.pf-slider-track {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  box-sizing: border-box;
+  border: var(--pf-control-border);
+  border-radius: var(--pf-radius);
+  /* One segment per step, split by dark lines like the game's bars. */
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 calc(100% / var(--pf-segments) - 2px),
+      var(--pf-edge-dark) calc(100% / var(--pf-segments) - 2px) calc(100% / var(--pf-segments))
+    ),
+    var(--pf-raised);
+}
+.pf-slider-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--pf-accent);
+  border-radius: var(--pf-radius);
+  /* The segment lines stay visible over the filled part. */
+  mask: repeating-linear-gradient(
+    90deg,
+    #000 0 calc(100% / var(--pf-segments) - 2px),
+    transparent calc(100% / var(--pf-segments) - 2px) calc(100% / var(--pf-segments))
+  );
+}
+.pf-slider-thumb {
+  width: 12px;
+  height: 22px;
+  box-sizing: border-box;
+  background: var(--pf-stone);
+  border: var(--pf-control-border);
+  border-radius: var(--pf-radius);
+  box-shadow:
+    inset 0 2px 0 var(--pf-stone-hi),
+    inset 0 -3px 0 var(--pf-stone-lo);
+}
+.pf-slider-thumb:has(:focus-visible) {
+  outline: 2px solid var(--pf-focus);
+  outline-offset: 2px;
+}
+.pf-slider-marks {
+  position: relative;
+  isolation: isolate;
+}
+.pf-slider-mark {
+  position: absolute;
+  /* Close values stack on up to three rows (markRows). */
+  top: calc(4px + var(--pf-mark-row, 0) * 16px);
+  transform: translateX(-50%);
+  padding: 0 2px;
+  border: 0;
+  background: none;
+  color: var(--pf-text-faint);
+  font: inherit;
+  font-size: 0.85em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pf-slider-mark::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: calc(-4px - var(--pf-mark-row, 0) * 16px);
+  width: 2px;
+  height: calc(3px + var(--pf-mark-row, 0) * 16px);
+  opacity: calc(1 - var(--pf-mark-row, 0) * 0.3);
+  z-index: -1;
+  background: var(--pf-text-faint);
+}
+.pf-slider-mark:hover {
+  color: var(--pf-text);
+}
+.pf-slider-mark:focus-visible {
+  outline: 2px solid var(--pf-focus);
+}
+
+:root[data-pf-theme='pulito'] .pf-slider-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}

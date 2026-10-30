@@ -1,0 +1,72 @@
+.pf-select-trigger {
+  height: var(--pf-control-height);
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: var(--pf-sunken);
+  color: var(--pf-text);
+  font: inherit;
+  border: 2px solid;
+  border-color: var(--pf-field-border);
+  border-radius: var(--pf-radius);
+}
+:root[data-pf-theme='pulito'] .pf-select-trigger {
+  border-width: 1px;
+}
+.pf-select-trigger:focus-visible {
+  outline: 2px solid var(--pf-focus);
+  outline-offset: 1px;
+}
+.pf-select-trigger[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.pf-select-icon {
+  display: flex;
+  color: var(--pf-text-muted);
+}
+
+/* Every floating surface (select, menu, tooltip) shares this look. */
+.pf-popup {
+  background: var(--pf-panel);
+  color: var(--pf-text);
+  font-family: var(--pf-text-font);
+  font-size: var(--pf-text-size);
+  -webkit-font-smoothing: var(--pf-font-smoothing);
+  border: var(--pf-control-border);
+  border-radius: var(--pf-radius-large);
+  box-shadow: var(--pf-popup-shadow);
+}
+.pf-select-positioner {
+  z-index: 100;
+  outline: none;
+}
+.pf-select-popup {
+  min-width: var(--anchor-width);
+  max-height: var(--available-height);
+  overflow-y: auto;
+  padding: 4px 0;
+  box-sizing: border-box;
+}
+.pf-select-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+  outline: none;
+}
+.pf-select-item[data-highlighted] {
+  background: var(--pf-accent-soft);
+}
+.pf-select-item[data-selected] {
+  color: var(--pf-accent-text);
+}
+.pf-select-hint {
+  margin-left: auto;
+  color: var(--pf-text-faint);
+}

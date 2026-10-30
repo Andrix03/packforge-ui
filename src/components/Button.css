@@ -1,0 +1,88 @@
+.pf-button {
+  height: var(--pf-control-height);
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  cursor: pointer;
+  border: var(--pf-control-border);
+  border-radius: var(--pf-radius);
+  background: var(--pf-stone);
+  color: var(--pf-on-stone);
+  /* The game's bevel: light top edge, dark bottom edge (transparent in Pulito). */
+  box-shadow:
+    inset 0 2px 0 var(--pf-stone-hi),
+    inset 0 -3px 0 var(--pf-stone-lo);
+}
+.pf-button:hover:not(:disabled) {
+  background: var(--pf-stone-hover);
+}
+.pf-button:active:not(:disabled) {
+  background: var(--pf-stone-pressed);
+  box-shadow:
+    inset 0 3px 0 var(--pf-stone-lo),
+    inset 0 -1px 0 var(--pf-stone-hi);
+  padding-top: 2px;
+}
+.pf-button:focus-visible {
+  outline: 2px solid var(--pf-focus);
+  outline-offset: 2px;
+}
+.pf-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pf-button-main {
+  background: var(--pf-accent);
+  color: var(--pf-on-accent);
+  box-shadow:
+    inset 0 2px 0 var(--pf-accent-hi),
+    inset 0 -3px 0 var(--pf-accent-lo);
+}
+.pf-button-main:hover:not(:disabled) {
+  background: var(--pf-accent);
+  filter: brightness(1.1);
+}
+.pf-button-main:active:not(:disabled) {
+  background: var(--pf-accent);
+  box-shadow:
+    inset 0 3px 0 var(--pf-accent-lo),
+    inset 0 -1px 0 var(--pf-accent-hi);
+}
+
+.pf-button-quiet,
+.pf-button-quiet:active:not(:disabled) {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--pf-text-muted);
+}
+.pf-button-quiet:hover:not(:disabled) {
+  background: var(--pf-raised);
+  color: var(--pf-text);
+}
+
+.pf-button-danger {
+  color: var(--pf-danger);
+}
+
+.pf-button-dangerSolid {
+  background: var(--pf-danger-solid);
+  color: var(--pf-on-danger-solid);
+  box-shadow:
+    inset 0 2px 0 var(--pf-danger-hi),
+    inset 0 -3px 0 var(--pf-danger-lo);
+}
+.pf-button-dangerSolid:hover:not(:disabled) {
+  background: var(--pf-danger-solid);
+  filter: brightness(1.1);
+}
+
+.pf-icon-button {
+  width: var(--pf-control-height);
+  padding: 0;
+}

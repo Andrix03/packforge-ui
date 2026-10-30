@@ -1,0 +1,38 @@
+.pf-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pf-checkbox label {
+  cursor: pointer;
+}
+.pf-checkbox-box {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: var(--pf-sunken);
+  border: 2px solid;
+  border-color: var(--pf-field-border);
+  border-radius: calc(var(--pf-radius) * 0.66);
+  color: var(--pf-on-accent);
+}
+.pf-checkbox-box[data-checked] {
+  background: var(--pf-accent);
+}
+.pf-checkbox-box:focus-visible {
+  outline: 2px solid var(--pf-focus);
+  outline-offset: 2px;
+}
+.pf-checkbox-box[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.pf-checkbox-mark {
+  display: flex;
+}

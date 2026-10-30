@@ -1,0 +1,88 @@
+.pf-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.pf-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+}
+.pf-toggle-description {
+  font-size: 0.875em;
+}
+
+.pf-switch {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 0;
+  cursor: pointer;
+  border: var(--pf-control-border);
+  background: var(--pf-edge-dark);
+}
+.pf-switch:focus-visible {
+  outline: 2px solid var(--pf-focus);
+  outline-offset: 2px;
+}
+.pf-switch[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Minecraft: two cells, the lit one green. */
+.pf-switch-o,
+.pf-switch-i {
+  width: 22px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Tiny5', monospace;
+  font-size: 10px;
+  background: var(--pf-raised);
+  color: var(--pf-text-faint);
+}
+.pf-switch[data-unchecked] .pf-switch-o {
+  background: var(--pf-edge-dark);
+  color: var(--pf-text-muted);
+}
+.pf-switch[data-checked] .pf-switch-i {
+  background: var(--pf-accent);
+  color: var(--pf-on-accent);
+}
+.pf-switch-thumb {
+  display: none;
+}
+
+/* Pulito: a pill with a sliding knob. */
+:root[data-pf-theme='pulito'] .pf-switch {
+  width: 36px;
+  height: 20px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--pf-edge-light);
+  transition: background 120ms;
+}
+:root[data-pf-theme='pulito'] .pf-switch[data-checked] {
+  background: var(--pf-accent);
+}
+:root[data-pf-theme='pulito'] .pf-switch-o,
+:root[data-pf-theme='pulito'] .pf-switch-i {
+  display: none;
+}
+:root[data-pf-theme='pulito'] .pf-switch-thumb {
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  background: #fff;
+  transition: left 120ms;
+}
+:root[data-pf-theme='pulito'] .pf-switch[data-checked] .pf-switch-thumb {
+  left: 19px;
+}

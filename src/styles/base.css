@@ -1,0 +1,65 @@
+/* Fonts (CC0 and OFL, licences in src/fonts) and the page basics every component relies on. */
+@font-face {
+  font-family: 'PixelOperator';
+  font-weight: 400;
+  src: url('../fonts/PixelOperator.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'PixelOperator';
+  font-weight: 700;
+  src: url('../fonts/PixelOperator-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'PixelOperatorMono';
+  src: url('../fonts/PixelOperatorMono.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Tiny5';
+  src: url('../fonts/tiny5-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F;
+}
+@font-face {
+  font-family: 'Tiny5';
+  src: url('../fonts/tiny5-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F;
+}
+
+.pf-root,
+:root[data-pf-theme] body {
+  background: var(--pf-ground);
+  color: var(--pf-text);
+  font-family: var(--pf-text-font);
+  font-size: var(--pf-text-size);
+  -webkit-font-smoothing: var(--pf-font-smoothing);
+}
+
+/* Short caps labels: buttons, tabs, panel titles (Tiny5 in Minecraft, semibold in Pulito). */
+.pf-label {
+  font-family: var(--pf-label-font);
+  font-size: var(--pf-label-size);
+  font-weight: var(--pf-label-weight);
+  text-transform: var(--pf-label-transform);
+  letter-spacing: var(--pf-label-spacing);
+  line-height: 1;
+}
+
+.pf-muted {
+  color: var(--pf-text-muted);
+}
+
+.pf-mono {
+  font-family: var(--pf-mono-font);
+}
+
+.pf-focus-ring:focus-visible,
+.pf-focusable:focus-visible {
+  outline: 2px solid var(--pf-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-pf-theme] * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

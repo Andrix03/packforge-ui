@@ -1,0 +1,44 @@
+.pf-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--pf-panel);
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--pf-edge-light) var(--pf-edge-dark) var(--pf-edge-dark) var(--pf-edge-light);
+  border-radius: var(--pf-radius-large);
+}
+.pf-panel-header {
+  min-height: 26px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--pf-panel-header);
+  border-bottom: 1px solid var(--pf-edge-dark);
+  border-radius: var(--pf-radius-large) var(--pf-radius-large) 0 0;
+}
+:root[data-pf-theme='pulito'] .pf-panel-header {
+  min-height: 34px;
+  padding: 0 12px;
+}
+.pf-panel-title {
+  margin: 0;
+  color: var(--pf-text-muted);
+}
+.pf-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.pf-panel-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pf-panel-flush {
+  padding: 0;
+  gap: 0;
+}
