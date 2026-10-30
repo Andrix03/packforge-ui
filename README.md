@@ -44,7 +44,7 @@ export function Export(): React.JSX.Element {
 ```
 
 `applyTheme` writes the tokens on `<html>`, so menus and dialogs opened in a portal are themed
-too. The interface scale belongs to the app (Electron's zoom factor).
+too. Add the `pf-root` class to `<body>` (or a container) for the theme's page background and font. The interface scale belongs to the app (Electron's zoom factor).
 
 ## Work on it
 

@@ -5,6 +5,7 @@
   background: rgba(0, 0, 0, 0.55);
 }
 .pf-dialog {
+  width: min(460px, calc(100vw - 32px));
   position: fixed;
   top: 50%;
   left: 50%;

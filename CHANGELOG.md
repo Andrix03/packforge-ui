@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.1 — 2026-10-30
+
+- Dialog: `title` is optional, with `label` for a window that draws its own heading;
+  `dismissible={false}` keeps it open while work runs; `className` for the app's layout; the
+  width comes from CSS unless `width` is given.
+- Two windows open at once (a question over a dialog): Esc closes only the one on top.
+- The page look (background, font) is opt-in with the `pf-root` class: the kit no longer styles
+  `<body>` by itself.
+- Workflows on the current versions of the GitHub actions.
+
 ## 0.1.0 — 2026-10-30
 
 - Two themes as design tokens, Minecraft and Pulito, with a contrast test on every text colour.

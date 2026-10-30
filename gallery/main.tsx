@@ -6,6 +6,7 @@ import { Gallery } from './Gallery'
 import { initialTheme } from './params'
 
 applyTheme(initialTheme())
+document.body.classList.add('pf-root')
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
